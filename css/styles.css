@@ -1,18 +1,16 @@
-/*fuentes*/
-
 *{
     margin: 0;
     padding: 0;
 }
 
 .container{
-    font-family: 'Monserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .banner{
     width: 100%;
     height: 100vh;
-    /* background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9) );  falta info */
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .8)), url(../img/pexels-alex-green-5693056.jpg) center no-repeat;
     background-size: cover;
 }
 
@@ -29,7 +27,7 @@
     width: 100%;
 }
 
-.hamburger-menu{
+.hamburger-menu {
     width: 35px;
     height: 30px;
     position: fixed;
@@ -48,15 +46,15 @@
     background-color: #16c3cf;
     border-radius: 25px;
     transform-origin: right;
-    transition: tranform .5s;
+    transition: transform .5s;
 }
 
 .line-2{
-    height: 3px;
+    height: 3px;  /*Corregir altura de la segunda línea*/
 }
 
-.change .line-1{
-    transform: rotateZ(-45deg);
+.change .line-1{  
+    transform: rotateZ(-45deg);    /*Transformación de hamburguesa en x*/
 }
 
 .change .line-2{
@@ -71,8 +69,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    perspective: 1000px; /*Fuga de botón*/
+    transform: translate(-50%, -50%);  /*izda, arriba*/
+    perspective: 1000px; /*Fuga de botón, cuanto más alto este número más lejos está el punto de fuga y menos se nota el efecto.*/
 }
 
 .banner-btn{
@@ -81,32 +79,32 @@
     background: linear-gradient(#16c3cf, #156469);
     border: none;
     outline: none;
-    font-family: 'Sabo 27px', serif;
+    font-family: 'Slabo 27px', serif;
     font-size: 35px;
     text-transform: uppercase;
     letter-spacing: 4px;
     color: #fff;
-    text-shadow:  0 10px 10px #000;
+    text-shadow: 0 10px 10px #000;
     cursor: pointer;
-    transform: rotateX(70deg) rotateZ(30deg);
-    transform-style: preserve-3d;
-    transition: transform .5s;
+    transform: rotateX(70deg) rotateZ(30deg);  /*Cómo está rotado de inicio*/
+    transform-style: preserve-3d;  /*Al rotar que se conserve el 3D*/
+    transition: transform .5s; /*Preparar animación*/
 }
 
 .banner-btn:hover{
     transform: rotateX(30deg) rotateZ(0deg);
 }
 
-.banner-btn::before{
+.banner-btn::before{  /*Solapas que dan aspecto de caja al botón*/
     content: '';
-    width: 100%;
+    width: 100%;  /*100% del padre*/
     height: 15px;
     background-color: #156469;
-    position: absolute;
-    bottom: 0;
+    position: absolute;  /*Respecto a su padre*/
+    bottom: 0;   /*Desde abajo*/
     right: 0;
     transform: rotateX(90deg);
-    transform-origin: bottom;
+    transform-origin: bottom;  /*Se transforma desde la parte de abajo rotando en x 90º.*/
 }
 
 .banner-btn::after{
@@ -115,7 +113,7 @@
     height: 100%;
     background-color: #16c3cf;
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
     transform: rotateY(-90deg);
     transform-origin: right;
@@ -124,9 +122,16 @@
 .top-nav{
     height: 15vh;
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url() no-repeat 50% 0;  /*falta url*/
+    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(../img/pexels-messala-ciulla-1114226.jpg) no-repeat 50% 0;  /*img de fondo de navegador*/
     background-size: cover;
-    /**/
+    position: fixed;
+    top: -15vh;
+    z-index: 50;
+    transition: top .4s;
+}
+
+.change .top-nav{
+    top: 0;
 }
 
 .nav-list{
@@ -134,8 +139,8 @@
     width: 80%;
     margin: auto;
     height: inherit;
-    display: flex;
-    justify-content: space-evenly;
+    display: flex;  
+    justify-content: space-evenly;  /*Para que los contenidos se repartan equidistantes*/
     align-items: center;
 }
 
@@ -155,30 +160,31 @@
     display: block;
     position: relative;
     transform-style: preserve-3d;
-    transform-origin: top;
+    transform-origin: top;  /*Giro va a ser sobre la parte de arriba, no sobre el eje del centro.*/
     transition: transform .3s;
 }
 
 .nav-link:hover{
-    transform: rotateX(90deg);
+    transform: rotateX(90deg);  /*Rota en x 90º*/
 }
 
-.nav-link::after{
-    content: attr(data-text);
+.nav-link::after{       /*Gira pieza desde parte de arriba en x*/
+    content: attr(data-text); /*Aparece el texto del data-text (de html) sustituyendo*/
     position: absolute;
-    left: 0;
-    bottom: -100%;
+    left: 0;   /*Desde izda 0*/
+    bottom: -100%; /*data-text está debajo */
     background-color: #000;
     padding: inherit;
     color: #16c3cf;
-    transform: rotateX(-90deg);
-    transform-origin: top;
+    transform: rotateX(-90deg);  /*Rota en negativo para ocupar sitio del original del navegador.*/
+    transform-origin: top; 
 }
 
 .bottom-nav{
     width: 100%;
     height: 85vh;
-    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url() no-repeat 50% 0; /*no se si se tiene que poner no-repeat 50% 0*/
+    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(../img/pexels-ron-lach-7884129.jpg) no-repeat 50% -15vh;
+    background-size: cover;
     position: fixed;
     bottom: -85vh;
     transition: bottom .4s;
@@ -191,7 +197,7 @@
 
 .icons{
     position: absolute;
-    top: 50%;
+    top: 50%;  /*Centrado respecto a esquine superior izda*/
     left: 50%;
     transform: translate(-50%, -50%);
     list-style: none;
@@ -208,7 +214,7 @@
     width: 200px;
     height: 200px;
     border: 8px solid #fff;
-    display: flex;
+    display: flex;    /*Para que todos los elementos se alineen al centro.*/
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -230,7 +236,14 @@
     top: 0;
 }
 
-/**/
+.icon-link::after{
+    content: '';
+    height: 25px;
+    width: 5px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+}
 
 .icon-link i{
     color: #fff;
@@ -242,6 +255,201 @@
     justify-content: center;
     align-items: center;
     border: 3px solid #fff;
-    text-shadow: ; 
-    /**/
+    text-shadow: 0 10px 20px rgba(0, 0, 0, .5); 
+    overflow: hidden;
+    position: relative;
+    transition: all .5s;
 }
+
+.icon-link:hover i{
+    transform: rotateY(-70deg);
+    text-shadow: 10px 10px 20px rgba(0, 0, 0, .5);
+}
+
+.icon-link i::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: -130%;
+    right: -130%;
+    border-radius: 100%;
+    z-index: -1;
+    transition: all .3s;
+}
+
+.icon-item:nth-child(1) .icon-link i::after{
+    background-color: #3b5999;
+}
+
+.icon-item:nth-child(2) .icon-link i::after{
+    background-color: #cd201f;
+}
+
+.icon-item:nth-child(3) .icon-link i::after{
+    background-color: #55acee;
+}
+
+.icon-item:nth-child(4) .icon-link i::after{
+    background-color: #dd4b39;
+}
+
+.icon-link:hover i::after{
+    top: 0;
+    right: 0;
+    border-radius: 0;
+}
+
+@media(max-width: 1600px){
+    .icons{
+        width: 80%;
+    }
+}
+
+@media(max-width: 1200px){
+    .top-nav{
+        background: #010101;
+    }
+
+    .nav-list{
+        justify-content: center;
+    }
+
+    .nav-link{
+        font-size: 25px;
+    }
+
+    .icons{
+        width: 70%;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .icon-link{
+        width: 180px;
+        height: 180px;
+        margin: 20px;
+    }
+
+    .icon-link i{
+        width: 130px;
+        height: 130px;
+        font-size: 40px;
+        }
+}
+
+@media(max-width: 900px){
+    .banner-btn{
+        width: 300px;
+        height: 80px;
+        font-size: 30px;
+    }
+
+    .top-nav{
+        height: 25vh;
+        top: -25vh;
+    }
+
+    .bottom-nav{
+        height: 75vh;
+        bottom: -75vh;
+    }
+
+    .nav-list{
+        width: 70%;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .nav-link{
+        margin: 3px 0;
+    }
+
+    .icons{
+        width: 95%;
+    }
+
+    .icon-link{
+        width: 140px;
+        height: 140px;
+    }
+
+    .icon-link i{
+        width: 90px;
+        height: 90px;
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 750px){
+    .nav-list{
+        width: 60%;
+    }
+
+    .icon-link{
+        width: 120px;
+        height: 120px;
+    }
+
+    .icon-link i{
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 550px){
+    .banner-btn{
+        width: 280px;
+        height: 70px;
+        font-size: 25px;
+    }
+
+    .logo{
+        width: 70px;
+        height: 70px;
+        left: 30px;
+    }
+
+    .top-nav{
+        height: 30vh;
+        top: -30vh;
+    }
+
+    .bottom-nav{
+        height: 70vh;
+        bottom: -70vh;
+    }
+
+    .icon-link{
+        width: 110px;
+        height: 110px;
+    }
+
+    .icon-link i{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 450px){
+    .banner-btn{
+        width: 260px;
+        height: 60px;
+    }
+
+    .top-nav{
+        height: 35vh;
+        top: -35vh;
+    }
+
+    .bottom-nav{
+        height: 65vh;
+        bottom: -65vh;
+    }
+
+    .nav-list{
+        width: 50%;
+    }
+}
+
